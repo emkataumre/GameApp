@@ -1,0 +1,4 @@
+populate_script/games.json
+populate_script/games_partial.json
+node_modules/
+.env
