@@ -1,3 +1,23 @@
+/**
+ * Game Data Enrichment Script
+ *
+ * This script enriches video game data by fetching additional details from the IGDB API.
+ * It processes a JSON file containing basic game information and enhances it with:
+ * - Company information (developers/publishers)
+ * - Platform details
+ * - Game modes
+ * - Genres
+ *
+ * The script:
+ * 1. Reads games from games_partial.json
+ * 2. Processes games in chunks to respect API rate limits
+ * 3. Fetches related data from multiple IGDB endpoints
+ * 4. Saves enriched data to games_enriched.json
+ * 5. Tracks statistics about the enrichment process in enrichment_stats.json
+ *
+ * ! RUN THIS AFTER populate_script.js !
+ */
+
 const axios = require("axios");
 const fs = require("fs").promises;
 

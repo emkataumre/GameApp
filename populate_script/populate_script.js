@@ -1,3 +1,24 @@
+/**
+ * Game Data Population Script
+ *
+ * This script fetches video game data from the IGDB API and saves it locally.
+ * It collects comprehensive game information including:
+ * - Basic game details (name, release date, summary, ratings)
+ * - Game modes (single player, multiplayer, etc.)
+ * - Platforms (PC, consoles, etc.)
+ * - Genres
+ * - Companies (developers and publishers)
+ * - Company websites
+ *
+ * The script:
+ * 1. Fetches games in batches of 500 from the IGDB API
+ * 2. For each batch, collects IDs of related entities (platforms, genres, etc.)
+ * 3. Fetches the related entity data in small batches to respect API rate limits
+ * 4. Saves progress periodically to games_partial.json
+ *
+ * ! RUN THIS BEFORE enrich_games.js !
+ */
+
 const axios = require("axios");
 const fs = require("fs").promises;
 
