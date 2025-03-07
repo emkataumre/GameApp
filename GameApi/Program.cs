@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using GameApi.Data.Context;
+using GameApi.Extensions;
 using dotenv.net;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using GameApi.Services;
 
 // Load .env file
 DotEnv.Load();
@@ -11,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.AddScoped<ITokenService, TokenService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -38,6 +42,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
