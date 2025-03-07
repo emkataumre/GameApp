@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GameApi.Data.Context;
 using GameApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameApi.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class GamesController : ControllerBase
 {
